@@ -1,4 +1,7 @@
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://de.mondry/questionnaire/beans" elementFormDefault="qualified" targetNamespace="http://de.mondry/questionnaire/beans">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+	xmlns:tns="http://de.mondry/questionnaire/beans" 
+	elementFormDefault="qualified" 
+	targetNamespace="http://de.mondry/questionnaire/beans">
   <xs:complexType name="questionnaire">
     <xs:sequence>
       <xs:element type="tns:question" name="question" minOccurs="0" maxOccurs="unbounded"/>

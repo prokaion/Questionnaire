@@ -1,5 +1,8 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<questionnaire xmlns="http://de.mondry/questionnaire/beans">
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE project>
+<questionnaire xmlns="http://de.mondry/questionnaire/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://de.mondry/questionnaire/beans src/main/resources/xsd/beans.xsd">
 	<question>
 		<question>Haben Sie Kinder?</question>
 		<answerlist singleChoice="true">
@@ -24,7 +27,8 @@
 				</question>
 				<question>
 					<question>Welche Einrichtungen besuchen Ihre Kinder (mehrere
-						Antworten sind hier möglich)?</question>
+						Antworten sind hier möglich)?
+					</question>
 					<answerlist singleChoice="false">
 						<answer checked="false">
 							<answerString>Kindergarten</answerString>

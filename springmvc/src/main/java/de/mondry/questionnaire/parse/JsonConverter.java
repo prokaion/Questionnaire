@@ -11,6 +11,11 @@ import org.codehaus.jackson.xc.JaxbAnnotationIntrospector;
 
 import de.mondry.questionnaire.parse.beans.Questionnaire;
 
+/**
+ * 
+ * @author daniel
+ * 
+ */
 public class JsonConverter {
     
     private ObjectMapper objectMapper;
