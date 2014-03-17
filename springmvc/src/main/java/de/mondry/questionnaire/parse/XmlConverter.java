@@ -1,7 +1,7 @@
 package de.mondry.questionnaire.parse;
 
-import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.io.PrintWriter;
 
 import javax.xml.bind.JAXBContext;
@@ -32,8 +32,8 @@ public class XmlConverter {
     
     public Questionnaire unmarshal(String filename) throws JAXBException {
         Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
-        
-        JAXBElement<Questionnaire> root = unmarshaller.unmarshal(new StreamSource(new File(filename)), Questionnaire.class);
+        InputStream is = this.getClass().getResourceAsStream(filename);
+        JAXBElement<Questionnaire> root = unmarshaller.unmarshal(new StreamSource(is), Questionnaire.class);
         return root.getValue();
     }
     

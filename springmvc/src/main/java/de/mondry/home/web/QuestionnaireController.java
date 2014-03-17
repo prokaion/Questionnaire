@@ -2,7 +2,6 @@ package de.mondry.home.web;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 import javax.xml.bind.JAXBException;
 
@@ -31,7 +30,7 @@ public class QuestionnaireController {
     public QuestionnaireController() {
         try {
             xmlConverter = new XmlConverter();
-            questionnaire = xmlConverter.unmarshal("nosferatu.xml");
+            questionnaire = xmlConverter.unmarshal("/xml/nosferatu.xml");
             allQuestions = gatherAllQuestions(questionnaire.getQuestion());
         } catch (JAXBException e) {
             LOG.error("", e);
@@ -65,7 +64,7 @@ public class QuestionnaireController {
         
         for (Question question : questions) {
             // add a unique id to question
-            question.setId(UUID.randomUUID());
+            // question.setId(UUID.randomUUID());
             
             allQuestions.add(question);
             List<Answer> answers = question.getAnswerlist().getAnswer();

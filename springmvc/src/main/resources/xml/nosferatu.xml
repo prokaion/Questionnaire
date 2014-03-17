@@ -2,13 +2,13 @@
 <!DOCTYPE project>
 <questionnaire xmlns="http://de.mondry/questionnaire/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://de.mondry/questionnaire/beans src/main/resources/xsd/beans.xsd">
-	<question>
+	xsi:schemaLocation="http://de.mondry/questionnaire/beans ../xsd/beans.xsd">
+	<question id="1">
 		<question>Haben Sie Kinder?</question>
 		<answerlist singleChoice="true">
 			<answer checked="false">
 				<answerString>Ja</answerString>
-				<question>
+				<question id="1.1">
 					<question>Wie viele Kinder haben Sie?</question>
 					<answerlist singleChoice="true">
 						<answer checked="false">
@@ -25,7 +25,7 @@
 						</answer>
 					</answerlist>
 				</question>
-				<question>
+				<question id="1.2">
 					<question>Welche Einrichtungen besuchen Ihre Kinder (mehrere
 						Antworten sind hier möglich)?
 					</question>
@@ -47,7 +47,7 @@
 			</answer>
 		</answerlist>
 	</question>
-	<question>
+	<question id="2">
 		<question>In welchem Stadtteil wohnen Sie?</question>
 		<answerlist singleChoice="true">
 			<answer checked="false">
