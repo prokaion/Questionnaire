@@ -1,0 +1,32 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://de.mondry/questionnaire/beans" elementFormDefault="qualified" targetNamespace="http://de.mondry/questionnaire/beans">
+  <xs:complexType name="questionnaire">
+    <xs:sequence>
+      <xs:element type="tns:question" name="question" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+  
+  <xs:element type="tns:questionnaire" name="questionnaire"/>
+  <xs:complexType name="question">
+    <xs:sequence>
+      <xs:element type="xs:string" name="question" minOccurs="1"/>
+      <xs:element type="tns:answerlist" name="answerlist" minOccurs="1"/>
+    </xs:sequence>
+  </xs:complexType>
+
+	<xs:complexType name="answerlist">
+		<xs:sequence>
+			<xs:element type="tns:answer" name="answer" minOccurs="0" maxOccurs="unbounded" />
+		</xs:sequence>
+		<xs:attribute type="xs:boolean" use="required" name="singleChoice" />
+	</xs:complexType>
+      
+  
+  <xs:complexType name="answer">
+	<xs:sequence>
+		<xs:element type="xs:string" name="answerString" minOccurs="0" />
+		<xs:element type="tns:question" name="question" minOccurs="0" maxOccurs="unbounded" />
+	</xs:sequence>
+	<xs:attribute type="xs:boolean" use="required" name="checked" />
+  </xs:complexType>
+            
+</xs:schema>

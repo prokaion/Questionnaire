@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<questionnaire xmlns="http://de.mondry/questionnaire/beans">
+	<question>
+		<question>Haben Sie Kinder?</question>
+		<answerlist singleChoice="true">
+			<answer checked="false">
+				<answerString>Ja</answerString>
+				<question>
+					<question>Wie viele Kinder haben Sie?</question>
+					<answerlist singleChoice="true">
+						<answer checked="false">
+							<answerString>1</answerString>
+						</answer>
+						<answer checked="false">
+							<answerString>2</answerString>
+						</answer>
+						<answer checked="false">
+							<answerString>3</answerString>
+						</answer>
+						<answer checked="false">
+							<answerString>mehr</answerString>
+						</answer>
+					</answerlist>
+				</question>
+				<question>
+					<question>Welche Einrichtungen besuchen Ihre Kinder (mehrere
+						Antworten sind hier möglich)?</question>
+					<answerlist singleChoice="false">
+						<answer checked="false">
+							<answerString>Kindergarten</answerString>
+						</answer>
+						<answer checked="false">
+							<answerString>Schule</answerString>
+						</answer>
+						<answer checked="false">
+							<answerString>Sportverein</answerString>
+						</answer>
+					</answerlist>
+				</question>
+			</answer>
+			<answer checked="false">
+				<answerString>Nein</answerString>
+			</answer>
+		</answerlist>
+	</question>
+	<question>
+		<question>In welchem Stadtteil wohnen Sie?</question>
+		<answerlist singleChoice="true">
+			<answer checked="false">
+				<answerString>Mitte</answerString>
+			</answer>
+			<answer checked="false">
+				<answerString>Pankow</answerString>
+			</answer>
+		</answerlist>
+	</question>
+</questionnaire>
