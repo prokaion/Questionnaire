@@ -11,7 +11,7 @@
   <xs:element type="tns:questionnaire" name="questionnaire"/>
   <xs:complexType name="question">
     <xs:sequence>
-      <xs:element type="xs:string" name="question" minOccurs="1"/>
+      <xs:element type="xs:string" name="questionString" minOccurs="1"/>
       <xs:element type="tns:answerlist" name="answerlist" minOccurs="1"/>
     </xs:sequence>
     <xs:attribute type="xs:string" use="required" name="id" />

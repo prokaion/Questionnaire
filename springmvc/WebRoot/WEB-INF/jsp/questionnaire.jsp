@@ -39,7 +39,7 @@
 
 		<c:forEach items="${allQuestions}" var="question">
 
-			${question.question}<br>					
+			${question.questionString}<br>					
 
 			<table>
 				<tr>

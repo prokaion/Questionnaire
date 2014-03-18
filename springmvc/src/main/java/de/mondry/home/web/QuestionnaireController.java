@@ -1,5 +1,7 @@
 package de.mondry.home.web;
 
+import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,13 +28,20 @@ public class QuestionnaireController {
     
     private Questionnaire questionnaire;
     private List<Question> allQuestions;
+    private String filename = "/xml/nosferatu.xml";
     
     public QuestionnaireController() {
         try {
             xmlConverter = new XmlConverter();
-            questionnaire = xmlConverter.unmarshal("/xml/nosferatu.xml");
+            
+            InputStream is = this.getClass().getResourceAsStream(filename);
+            if (is == null) {
+                throw new FileNotFoundException("no file found at: " + filename);
+            }
+            questionnaire = xmlConverter.unmarshal(is);
+            
             allQuestions = gatherAllQuestions(questionnaire.getQuestion());
-        } catch (JAXBException e) {
+        } catch (JAXBException | FileNotFoundException e) {
             LOG.error("", e);
             throw new RuntimeException(e);
         }

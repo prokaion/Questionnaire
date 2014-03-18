@@ -11,7 +11,8 @@ public class BuildQuestionnaireObject {
         Questionnaire questionnaire = new Questionnaire();
         
         Question question = new Question();
-        question.setQuestion("Haben Sie Kinder?");
+        question.setId("1");
+        question.setQuestionString("Haben Sie Kinder?");
         Answerlist answerlist = new Answerlist();
         answerlist.setSingleChoice(true);
         
@@ -34,7 +35,8 @@ public class BuildQuestionnaireObject {
         
         // independent question 2
         Question quest2 = new Question();
-        quest2.setQuestion("In welchem Stadtteil wohnen Sie?");
+        quest2.setId("2");
+        quest2.setQuestionString("In welchem Stadtteil wohnen Sie?");
         
         Answerlist answerlist2 = new Answerlist();
         answerlist2.setSingleChoice(true);
@@ -55,7 +57,8 @@ public class BuildQuestionnaireObject {
     
     private static Question generateLocationOfKids() {
         Question q = new Question();
-        q.setQuestion("Welche Einrichtungen besuchen Ihre Kinder (mehrere Antworten sind hier möglich)?");
+        q.setId("1.2");
+        q.setQuestionString("Welche Einrichtungen besuchen Ihre Kinder (mehrere Antworten sind hier möglich)?");
         Answerlist list = new Answerlist();
         list.setSingleChoice(false);
         
@@ -76,7 +79,8 @@ public class BuildQuestionnaireObject {
     
     private static Question generateQuestKids() {
         Question questKids = new Question();
-        questKids.setQuestion("Wie viele Kinder haben Sie?");
+        questKids.setId("1.1");
+        questKids.setQuestionString("Wie viele Kinder haben Sie?");
         Answerlist answKids = new Answerlist();
         answKids.setSingleChoice(true);
         

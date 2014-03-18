@@ -30,9 +30,20 @@ public class XmlConverter {
         out.close();
     }
     
-    public Questionnaire unmarshal(String filename) throws JAXBException {
-        Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
+    public Questionnaire unmarshal(String filename) throws JAXBException, FileNotFoundException {
         InputStream is = this.getClass().getResourceAsStream(filename);
+        if (is == null) {
+            throw new FileNotFoundException("no file found at: " + filename);
+        }
+        return doUnmarshal(is);
+    }
+    
+    public Questionnaire unmarshal(InputStream is) throws JAXBException {
+        return doUnmarshal(is);
+    }
+    
+    private Questionnaire doUnmarshal(InputStream is) throws JAXBException {
+        Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
         JAXBElement<Questionnaire> root = unmarshaller.unmarshal(new StreamSource(is), Questionnaire.class);
         return root.getValue();
     }
