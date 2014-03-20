@@ -5,21 +5,22 @@
 // Generated on: 2014.03.18 at 02:55:53 PM CET 
 //
 
-
 package de.mondry.questionnaire.parse.beans;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlType;
 
-
 /**
- * <p>Java class for answer complex type.
+ * <p>
+ * Java class for answer complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>
+ * The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="answer">
@@ -38,60 +39,52 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "answer", propOrder = {
-    "answerString",
-    "question"
-})
+@XmlType(name = "answer", propOrder = { "answerString", "question" })
 public class Answer {
-
+    
     protected String answerString;
     protected List<Question> question;
     @XmlAttribute(name = "checked", required = true)
     protected boolean checked;
-
+    
     /**
      * Gets the value of the answerString property.
      * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * @return possible object is {@link String }
+     * 
      */
     public String getAnswerString() {
         return answerString;
     }
-
+    
     /**
      * Sets the value of the answerString property.
      * 
      * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *            allowed object is {@link String }
+     * 
      */
     public void setAnswerString(String value) {
         this.answerString = value;
     }
-
+    
     /**
      * Gets the value of the question property.
      * 
      * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the question property.
+     * This accessor method returns a reference to the live list, not a snapshot. Therefore any modification you make to the returned list will be present
+     * inside the JAXB object. This is why there is not a <CODE>set</CODE> method for the question property.
      * 
      * <p>
      * For example, to add a new item, do as follows:
+     * 
      * <pre>
-     *    getQuestion().add(newItem);
+     * getQuestion().add(newItem);
      * </pre>
      * 
      * 
      * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link Question }
+     * Objects of the following type(s) are allowed in the list {@link Question }
      * 
      * 
      */
@@ -101,7 +94,7 @@ public class Answer {
         }
         return this.question;
     }
-
+    
     /**
      * Gets the value of the checked property.
      * 
@@ -109,7 +102,7 @@ public class Answer {
     public boolean isChecked() {
         return checked;
     }
-
+    
     /**
      * Sets the value of the checked property.
      * 
@@ -117,5 +110,10 @@ public class Answer {
     public void setChecked(boolean value) {
         this.checked = value;
     }
-
+    
+    @Override
+    public String toString() {
+        return "Answer [answerString=" + answerString + ", question=" + question + ", checked=" + checked + "]";
+    }
+    
 }

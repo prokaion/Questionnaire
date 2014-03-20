@@ -75,4 +75,50 @@ public class Questionnaire {
         return this.question;
     }
     
+    /**
+     * Convenient method for returning all questions in one big list.
+     * 
+     * @return List<Question> all questions of this object.
+     */
+    public List<Question> gatherAllQuestions() {
+        List<Question> questions = this.question;
+        return gatherAllQuestions(questions);
+    }
+    
+    /**
+     * Iterate over all questions and gather all subquestion into one big list.
+     * 
+     * @return
+     */
+    private List<Question> gatherAllQuestions(List<Question> questions) {
+        List<Question> allQuestions = new ArrayList<>();
+        
+        for (Question question : questions) {
+            
+            allQuestions.add(question);
+            List<Answer> answers = question.getAnswerlist().getAnswer();
+            for (Answer answer : answers) {
+                if (answer.getQuestion().size() > 0) {
+                    allQuestions.addAll(gatherAllQuestions(answer.getQuestion()));
+                }
+            }
+        }
+        return allQuestions;
+    }
+    
+    public boolean findAnswerByIdAndAnswerString(String id, String answerString) {
+        List<Question> allQuestions = gatherAllQuestions();
+        for (Question question : allQuestions) {
+            if (id.equals(question.id)) {
+                List<Answer> answers = question.getAnswerlist().getAnswer();
+                for (Answer answer : answers) {
+                    if (answerString.equals(answer.answerString)) {
+                        return answer.checked;
+                    }
+                }
+            }
+        }
+        throw new IllegalArgumentException("No matching answer found. Should not happen.");
+    }
+    
 }

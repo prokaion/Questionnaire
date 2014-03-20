@@ -46,14 +46,15 @@
 					<c:forEach items="${question.answerlist.answer}" var="answer">
 						<td>
 						<c:choose>
-							<c:when
-									test="${question.answerlist.singleChoice == true }">
-								<input type="radio" name="${question.id}">${answer.answerString}
+							<c:when test="${question.answerlist.singleChoice == true }">
+								<input type="radio" name="${question.id}">
 							</c:when>
 							<c:otherwise>
-								<input type="checkbox" name="${question.id}">${answer.answerString}
+								<input type="checkbox" name="${question.id}">
 							</c:otherwise>
 						</c:choose>
+						<label for="${question.id}">${answer.answerString}</label>
+						<input type="hidden" name="label.${question.id}" value="${answer.answerString}">
 						</td>
 					</c:forEach>
 				</tr>

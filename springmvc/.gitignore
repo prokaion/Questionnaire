@@ -1,4 +1,6 @@
 /target
 .checkstyle
 .classpath
-.pmd
+.pmd*
+.project
+.settings
