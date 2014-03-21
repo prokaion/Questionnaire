@@ -1,27 +1,37 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>de.mondry.lib</groupId>
 		<artifactId>lib-parent-pom</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-	
-  <groupId>de.mondry.home</groupId>
-  <artifactId>springmvc</artifactId>
-  <version>0.0.2-SNAPSHOT</version>
-  <packaging>war</packaging>
-  <name>springmvc</name>
-  	<build>
+
+	<groupId>de.mondry.home</groupId>
+	<artifactId>springmvc</artifactId>
+	<version>0.0.2-SNAPSHOT</version>
+	<packaging>war</packaging>
+	<name>springmvc</name>
+	<build>
 		<finalName>springmvc</finalName>
 
 		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.1</version>
+				<configuration>
+					<source>1.7</source>
+					<target>1.7</target>
+				</configuration>
+			</plugin>
 
 			<plugin>
 				<artifactId>maven-surefire-plugin</artifactId>
 				<version>2.9</version>
-<!-- 				<configuration> -->
-<!-- 					<skip>true</skip> -->
-<!-- 				</configuration> -->
+				<!-- <configuration> -->
+				<!-- <skip>true</skip> -->
+				<!-- </configuration> -->
 			</plugin>
 
 			<plugin>
@@ -34,20 +44,20 @@
 		</plugins>
 	</build>
 
-	<repositories>	
+	<repositories>
 		<repository>
-		    <id>java.net</id>
-		    <url>http://download.java.net/maven/2</url>
-		</repository>	
-	</repositories>	
-	
+			<id>java.net</id>
+			<url>http://download.java.net/maven/2</url>
+		</repository>
+	</repositories>
+
 	<dependencies>
-	    <dependency>
-	        <groupId>org.apache.tomcat</groupId>
-	        <artifactId>tomcat-servlet-api</artifactId>
-	        <version>7.0.21</version>
-	        <scope>provided</scope>
-	    </dependency>
+		<dependency>
+			<groupId>org.apache.tomcat</groupId>
+			<artifactId>tomcat-servlet-api</artifactId>
+			<version>7.0.21</version>
+			<scope>provided</scope>
+		</dependency>
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
@@ -77,7 +87,7 @@
 			<artifactId>jstl</artifactId>
 			<version>1.2</version>
 		</dependency>
-		<!-- standard.jar --> 
+		<!-- standard.jar -->
 		<dependency>
 			<groupId>taglibs</groupId>
 			<artifactId>standard</artifactId>
@@ -97,8 +107,8 @@
 			<groupId>org.codehaus.jackson</groupId>
 			<artifactId>jackson-xc</artifactId>
 			<version>1.9.13</version>
-		</dependency>							
-		
+		</dependency>
+
 		<!-- Logging -->
 		<dependency>
 			<groupId>org.slf4j</groupId>
@@ -115,6 +125,6 @@
 		<dependency>
 			<groupId>ch.qos.logback</groupId>
 			<artifactId>logback-classic</artifactId>
-		</dependency>		
+		</dependency>
 	</dependencies>
 </project>
