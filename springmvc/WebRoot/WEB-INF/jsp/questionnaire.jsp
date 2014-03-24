@@ -10,7 +10,7 @@
 
 	    $('form').submit(function() {
 	    	//alert("submit pressed!");
-	        var queryString = JSON.stringify($('#form').serializeArray()); //$('#form').serialize();
+	        var queryString = JSON.stringify($('#form').serializeArray()); 
 	    	
 	    	$.ajax({
 	    		url: $(this).attr('action'),
@@ -29,6 +29,14 @@
 	    });
 	    return false;
 	});
+	    
+	function show(idName){
+		$("div[id^='"+idName+"\\.']").show();
+	}
+	
+	function hide(idName){
+		$("div[id^='"+idName+"\\.']").hide();
+	}
 	
 	</script>	
 </head>
@@ -38,7 +46,7 @@
 	<form:form method="post" modelAttribute="questionnaire" action="addQuestionnaire" id="form">
 
 		<c:forEach items="${allQuestions}" var="question">
-
+			<div id="${question.id}">
 			${question.questionString}<br>					
 
 			<table>
@@ -46,8 +54,11 @@
 					<c:forEach items="${question.answerlist.answer}" var="answer">
 						<td>
 						<c:choose>
-							<c:when test="${question.answerlist.singleChoice == true }">
-								<input type="radio" name="${question.id}">
+							<c:when test="${question.answerlist.singleChoice == true && answer.answerString =='Nein'}">
+								<input type="radio" name="${question.id}" onClick="hide(${question.id})">
+							</c:when>
+							<c:when test="${question.answerlist.singleChoice == true && answer.answerString =='Ja'}">
+								<input type="radio" name="${question.id}" onClick="show(${question.id})">
 							</c:when>
 							<c:otherwise>
 								<input type="checkbox" name="${question.id}">
@@ -59,6 +70,7 @@
 					</c:forEach>
 				</tr>
 			</table>
+			</div>
 
 		</c:forEach><br>
 		<input type="submit" value="Submit">

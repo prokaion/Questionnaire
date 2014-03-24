@@ -23,13 +23,13 @@ public class FormDataParseTest {
     
     @Before
     public void setup() {
-        formDataParser = new FormDataParser(BuildQuestionnaireObject.newQestionnaire());
+        formDataParser = new FormDataParser();
     }
     
     @Test
     public void test() {
         try {
-            Questionnaire questionnaire = formDataParser.parseFormDataFromJson(jsonFormData);
+            Questionnaire questionnaire = formDataParser.parseFormDataFromJson(jsonFormData, BuildQuestionnaireObject.newQestionnaire());
             assertNotNull(questionnaire);
             
             // System.out.println(allQuestions.toString());
@@ -48,7 +48,7 @@ public class FormDataParseTest {
     @Test(expected = IllegalArgumentException.class)
     public void testNotNullAsParam() throws JsonParseException, JsonMappingException, IOException {
         
-        formDataParser.parseFormDataFromJson(null);
+        formDataParser.parseFormDataFromJson(null, BuildQuestionnaireObject.newQestionnaire());
     }
     
 }

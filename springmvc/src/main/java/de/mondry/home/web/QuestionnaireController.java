@@ -1,6 +1,7 @@
 package de.mondry.home.web;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
 
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import de.mondry.questionnaire.parse.FormDataParser;
 import de.mondry.questionnaire.parse.XmlConverter;
 import de.mondry.questionnaire.parse.beans.Question;
 import de.mondry.questionnaire.parse.beans.Questionnaire;
@@ -23,19 +25,19 @@ public class QuestionnaireController {
     private static final Logger LOG = LoggerFactory.getLogger(QuestionnaireController.class);
     
     private XmlConverter xmlConverter;
+    private FormDataParser formDataParser;
     
     private Questionnaire questionnaire;
     private List<Question> allQuestions;
     private String filename = "/xml/nosferatu.xml";
     
-    public QuestionnaireController() {
+    public QuestionnaireController(FormDataParser formDataParser, XmlConverter xmlConverter) {
+        this.formDataParser = formDataParser;
+        this.xmlConverter = xmlConverter;
         try {
-            xmlConverter = new XmlConverter();
+            LOG.info("constructed!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
             
-            InputStream is = this.getClass().getResourceAsStream(filename);
-            if (is == null) {
-                throw new FileNotFoundException("no file found at: " + filename);
-            }
+            InputStream is = loadStreamFromFile();
             questionnaire = xmlConverter.unmarshal(is);
             
             allQuestions = questionnaire.gatherAllQuestions();
@@ -63,8 +65,28 @@ public class QuestionnaireController {
     @RequestMapping(value = "/addQuestionnaire", method = RequestMethod.POST, consumes = "application/json")
     public String addQuestionnaire(@RequestBody String formAsJson) {
         
-        LOG.info("In here: " + formAsJson);
-        // model.addAttribute("question", questionnaire.getQuestion().get(0).getQuestion());
+        LOG.info("json data: " + formAsJson);
+        try {
+            // get a fresh template object from xml
+            Questionnaire questToPopulate = xmlConverter.unmarshal(loadStreamFromFile());
+            
+            questToPopulate = formDataParser.parseFormDataFromJson(formAsJson, questToPopulate);
+            
+            // do something with it...
+            
+        } catch (JAXBException | IOException e) {
+            LOG.error("", e);
+            throw new RuntimeException(e);
+        }
+        
         return "result";
+    }
+    
+    private InputStream loadStreamFromFile() throws FileNotFoundException {
+        InputStream is = this.getClass().getResourceAsStream(filename);
+        if (is == null) {
+            throw new FileNotFoundException("no file found at: " + filename);
+        }
+        return is;
     }
 }

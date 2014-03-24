@@ -8,6 +8,7 @@
        		http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
        		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
+	<import resource="classpath:spring-context/questionnaire-context.xml"/>
   <!-- the application context definition for the springapp DispatcherServlet -->
 
 	<mvc:annotation-driven />
@@ -20,6 +21,9 @@
     </bean>
     
 	<bean name="/hello.htm" class="de.mondry.home.web.HelloController"/>
-	<bean name="/questionnaire.htm" class="de.mondry.home.web.QuestionnaireController"/>	
+	<bean name="/questionnaire.htm" class="de.mondry.home.web.QuestionnaireController">
+		<constructor-arg ref="formDataParser"/>
+		<constructor-arg ref="xmlConverter"/>
+	</bean>	
 
 </beans>

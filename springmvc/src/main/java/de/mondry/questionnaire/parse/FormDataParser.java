@@ -1,13 +1,12 @@
 package de.mondry.questionnaire.parse;
 
 import java.io.IOException;
+import java.util.Iterator;
 import java.util.List;
-import java.util.ListIterator;
 
 import org.codehaus.jackson.JsonParseException;
 import org.codehaus.jackson.map.JsonMappingException;
 import org.codehaus.jackson.map.ObjectMapper;
-import org.codehaus.jackson.map.type.TypeFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -24,29 +23,25 @@ public class FormDataParser {
     
     private ObjectMapper objectMapper = new ObjectMapper();
     
-    private Questionnaire questionnaire;
-    private List<Question> allQuestions;
-    
-    public FormDataParser(Questionnaire questionnaire) {
-        this.questionnaire = questionnaire;
-        this.allQuestions = this.questionnaire.gatherAllQuestions();
+    public FormDataParser() {
     }
     
-    public Questionnaire parseFormDataFromJson(String jsonFormData) throws JsonParseException, JsonMappingException, IOException {
+    public Questionnaire parseFormDataFromJson(String jsonFormData, Questionnaire questionnaire) throws JsonParseException, JsonMappingException, IOException {
+        
         if (jsonFormData == null) {
             throw new IllegalArgumentException("json is null! " + jsonFormData);
         }
         
-        List<FormTuple> formTuples = objectMapper.readValue(jsonFormData, TypeFactory.collectionType(List.class, FormTuple.class));
+        List<FormTuple> formTuples = objectMapper.readValue(jsonFormData, objectMapper.getTypeFactory().constructCollectionType(List.class, FormTuple.class));
         
         LOG.info(formTuples.toString());
         
-        return parseFromFormTuples(formTuples);
+        return parseFromFormTuples(formTuples, questionnaire);
         
     }
     
-    private Questionnaire parseFromFormTuples(List<FormTuple> formTuples) {
-        ListIterator<FormTuple> it = formTuples.listIterator();
+    private Questionnaire parseFromFormTuples(List<FormTuple> formTuples, Questionnaire questionnaire) {
+        Iterator<FormTuple> it = formTuples.listIterator();
         
         while (it.hasNext()) {
             FormTuple formTuple = it.next();
@@ -55,7 +50,7 @@ public class FormDataParser {
                 FormTuple labelTuple = it.next();
                 // find the corresponding answer in questionnaireObject and set its value.
                 
-                setCorrespondingAnswer(formTuple, labelTuple);
+                setCorrespondingAnswer(formTuple, labelTuple, questionnaire.gatherAllQuestions());
             }
             
         }
@@ -67,8 +62,9 @@ public class FormDataParser {
      * 
      * @param formTuple
      * @param labelTuple
+     * @param allQuestions
      */
-    private void setCorrespondingAnswer(FormTuple formTuple, FormTuple labelTuple) {
+    private void setCorrespondingAnswer(FormTuple formTuple, FormTuple labelTuple, List<Question> allQuestions) {
         // performance should be no issue, so we run through the whole Questionnaire each time to find the answer and set it.
         String answerString = labelTuple.value;
         String questionId = formTuple.name;

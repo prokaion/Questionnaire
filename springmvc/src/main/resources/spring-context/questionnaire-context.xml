@@ -1,0 +1,11 @@
+<beans xmlns="http://www.springframework.org/schema/beans"		
+		xmlns:context="http://www.springframework.org/schema/context"
+       	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       	xsi:schemaLocation="http://www.springframework.org/schema/beans
+       		http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+ 
+ 	<bean id="xmlConverter" class="de.mondry.questionnaire.parse.XmlConverter"/>
+ 	
+	<bean id="formDataParser" class="de.mondry.questionnaire.parse.FormDataParser"/>      		
+       		
+</beans>       		
