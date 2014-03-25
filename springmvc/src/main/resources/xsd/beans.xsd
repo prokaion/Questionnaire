@@ -31,6 +31,7 @@
 		<xs:element type="tns:question" name="question" minOccurs="0" maxOccurs="unbounded" />
 	</xs:sequence>
 	<xs:attribute type="xs:boolean" use="required" name="checked" />
+	<xs:attribute type="xs:boolean" use="required" name="show" />
   </xs:complexType>
             
 </xs:schema>

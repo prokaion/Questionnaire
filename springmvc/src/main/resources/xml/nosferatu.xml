@@ -6,43 +6,42 @@
 	<question id="1">
 		<questionString>Haben Sie Kinder?</questionString>
 		<answerlist singleChoice="true">
-			<answer checked="false">
+			<answer checked="false" show="true">
 				<answerString>Ja</answerString>
 				<question id="1.1">
 					<questionString>Wie viele Kinder haben Sie?</questionString>
 					<answerlist singleChoice="true">
-						<answer checked="false">
+						<answer checked="false" show="false">
 							<answerString>1</answerString>
 						</answer>
-						<answer checked="false">
+						<answer checked="false" show="false">
 							<answerString>2</answerString>
 						</answer>
-						<answer checked="false">
+						<answer checked="false" show="false">
 							<answerString>3</answerString>
 						</answer>
-						<answer checked="false">
+						<answer checked="false" show="false">
 							<answerString>mehr</answerString>
 						</answer>
 					</answerlist>
 				</question>
 				<question id="1.2">
 					<questionString>Welche Einrichtungen besuchen Ihre Kinder (mehrere
-						Antworten sind hier möglich)?
-					</questionString>
+						Antworten sind hier möglich)?</questionString>
 					<answerlist singleChoice="false">
-						<answer checked="false">
+						<answer checked="false" show="false">
 							<answerString>Kindergarten</answerString>
 						</answer>
-						<answer checked="false">
+						<answer checked="false" show="false">
 							<answerString>Schule</answerString>
 						</answer>
-						<answer checked="false">
+						<answer checked="false" show="false">
 							<answerString>Sportverein</answerString>
 						</answer>
 					</answerlist>
 				</question>
 			</answer>
-			<answer checked="false">
+			<answer checked="false" show="false">
 				<answerString>Nein</answerString>
 			</answer>
 		</answerlist>
@@ -50,10 +49,10 @@
 	<question id="2">
 		<questionString>In welchem Stadtteil wohnen Sie?</questionString>
 		<answerlist singleChoice="true">
-			<answer checked="false">
+			<answer checked="false" show="false">
 				<answerString>Mitte</answerString>
 			</answer>
-			<answer checked="false">
+			<answer checked="false" show="false">
 				<answerString>Pankow</answerString>
 			</answer>
 		</answerlist>

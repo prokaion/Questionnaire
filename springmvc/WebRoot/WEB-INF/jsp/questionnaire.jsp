@@ -31,10 +31,12 @@
 	});
 	    
 	function show(idName){
+		alert(idName);
 		$("div[id^='"+idName+"\\.']").show();
 	}
 	
 	function hide(idName){
+		alert(idName);
 		$("div[id^='"+idName+"\\.']").hide();
 	}
 	
@@ -54,11 +56,15 @@
 					<c:forEach items="${question.answerlist.answer}" var="answer">
 						<td>
 						<c:choose>
-							<c:when test="${question.answerlist.singleChoice == true && answer.answerString =='Nein'}">
-								<input type="radio" name="${question.id}" onClick="hide(${question.id})">
-							</c:when>
-							<c:when test="${question.answerlist.singleChoice == true && answer.answerString =='Ja'}">
-								<input type="radio" name="${question.id}" onClick="show(${question.id})">
+							<c:when test="${question.answerlist.singleChoice == true}">
+								<c:choose>
+									<c:when test="${answer.show == false}">
+										<input type="radio" name="${question.id}" onClick="hide(${question.id})">
+									</c:when>
+									<c:otherwise>
+										<input type="radio" name="${question.id}" onClick="show(${question.id})">
+									</c:otherwise>
+								</c:choose>
 							</c:when>
 							<c:otherwise>
 								<input type="checkbox" name="${question.id}">
