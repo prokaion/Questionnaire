@@ -13,6 +13,11 @@ import javax.xml.transform.stream.StreamSource;
 
 import de.mondry.questionnaire.parse.beans.Questionnaire;
 
+/**
+ * 
+ * @author daniel
+ * 
+ */
 public class XmlConverter {
     
     private JAXBContext jaxbContext;
